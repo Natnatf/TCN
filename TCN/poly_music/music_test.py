@@ -102,10 +102,10 @@ def train(ep):
                             torch.matmul((1 - y), torch.log(1 - output).float().t()))
         total_loss += loss.item()
         count += output.size(0)
+        loss.backward()
 
         if args.clip > 0:
             torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
-        loss.backward()
         optimizer.step()
         if idx > 0 and idx % args.log_interval == 0:
             cur_loss = total_loss / count

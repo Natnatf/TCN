@@ -1,4 +1,5 @@
 .DS_Store/
+venv/
 lambada/
 wikitext-103/
 *.pt
